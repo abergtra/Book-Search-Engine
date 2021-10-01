@@ -65,20 +65,20 @@ export const SAVE_BOOK  = gql`
 `;
 //export remove book mutation for GraphQL
 export const REMOVE_BOOK  = gql`
-    {
-        me {
-            _id
-            username
-            email
-            bookCount
-            savedBooks {
-                bookId
-                authors
-                title
-                description
-                image
-                link
-            }
+    mutation removeBook($bookId: String!) {
+        removeBook(bookId: $bookId) {
+        _id
+        username
+        email
+        bookCount
+        savedBooks {
+            bookId
+            authors
+            image
+            description
+            title
+            link
+        }
         }
     }
 `;
