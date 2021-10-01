@@ -50,10 +50,18 @@ const resolvers = {
             throw new AuthenticationError('You are not logged in!')
         },
         removeBook: async (parent, args, context) => {
-
-        },
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { savedBooks: { bookId: args.bookId } } },
+                    { new: true }
+                );
+                return updatedUser;
+            }
+            throw new AuthenticationError('You are not logged in!')
+        }
     }
-}
+};
 
 //export resolvers
-module.exports = resolvers
+module.exports = resolvers;
