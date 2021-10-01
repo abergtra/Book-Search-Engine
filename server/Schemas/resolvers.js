@@ -15,5 +15,22 @@ const resolvers = {
             }
             throw new AuthenticationError('Not Logged In.');
         }
+    },
+    Mutation: {
+        login: async (parent, { email, password }) => {
+
+        },
+        addUser: async (parent, args) => {
+
+        },
+        saveBook: async (parent, { input }, context) => {
+
+        },
+        removeBook: async (parent, args, context) => {
+
+        },
     }
 }
+
+//export resolvers
+module.exports = resolvers
