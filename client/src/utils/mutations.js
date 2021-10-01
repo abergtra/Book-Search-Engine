@@ -3,20 +3,23 @@ import gql from "graphql-tag";
 
 //export login mutation for GraphQL
 export const LOGIN_USER  = gql`
-    {
-        me {
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+        token
+        user {
             _id
             username
             email
             bookCount
             savedBooks {
-                bookId
-                authors
-                title
-                description
-                image
-                link
+            bookId
+            title
+            description
+            authors
+            image
+            link
             }
+        }
         }
     }
 `;
