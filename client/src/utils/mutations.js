@@ -47,20 +47,19 @@ export const ADD_USER  = gql`
 `;
 //export save book mutation for GraphQL
 export const SAVE_BOOK  = gql`
-    {
-        me {
-            _id
-            username
-            email
-            bookCount
-            savedBooks {
-                bookId
-                authors
-                title
-                description
-                image
-                link
-            }
+    mutation saveBook($input: bookInput!) {
+        saveBook(input: $input) {
+        _id
+        username
+        email
+        savedBooks {
+            bookId
+            authors
+            image
+            description
+            title
+            link
+        }
         }
     }
 `;
